@@ -43,7 +43,7 @@ Now, you can access the current event data in your page: `site.data.currentEvent
 
 ```
 {% assign currentEvent = site.data.currentEvent %}
-<h2><a href="{{ currentEvent.url }}">{{ currentEvent.start | localize: "%d. %B %Y, %H:%M" }}</a></h2>
+<h2><a href="{{ currentEvent.url }}">{{ currentEvent.start }}</a></h2>
 <p><strong>{{ currentEvent.location }}</strong></p>
 <p>{{ currentEvent.content }}</p>
 ```
