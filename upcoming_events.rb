@@ -5,7 +5,7 @@ module Reading
     def generate(site)
       site.collections.each do |name, collection|
         if name == 'events'
-          site.data['currentEvent'] = collection.docs.select { |event| event.data['start'] > Time.now }.first
+          site.data['upcomingEvents'] = collection.docs.select { |event| event.data['start'] >= Time.now }
         end
       end
     end

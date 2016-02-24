@@ -1,14 +1,14 @@
-# current_event plugin for Jekyll
+# upcoming_events plugin for Jekyll
 
-This Jekyll plugin take a collection of events and filters out the "current" event, i.e. the event that takes places next.
+This Jekyll plugin takes a collection of events and filters out the upcoming events.
 
 >Example:
 >
->If today was 24 Feb 2016 (a Wednesday), and our events take place weekly on Thursdays, the current/upcoming event would take place on Thursday, 25 Feb 2016.
+>If today was 24 Feb 2016 (a Wednesday), and our events take place weekly on Thursdays, the upcoming events would take place today or later.
 
 ## Getting Started
 
-* Copy `current_event.rb` to your `_plugins` directory
+* Copy `upcoming_events.rb` to your `_plugins` directory
 * Create a directory named `_events`
 * Create a file for each event; event names must be ordered, e.g. by prefixing it with a date (however, **don't** use the `YYYY-MM-DD` prefix Jekyll reserves for posts; use `YYYYMMDD` for example.)
 * Configure the events collection:
@@ -42,7 +42,7 @@ location: "Our usual meetup location"
 Now, you can access the current event data in your page: `site.data.currentEvent`
 
 ```
-{% assign currentEvent = site.data.currentEvent %}
+{% assign currentEvent = site.data.upcomingEvents.first %}
 <h2><a href="{{ currentEvent.url }}">{{ currentEvent.start }}</a></h2>
 <p><strong>{{ currentEvent.location }}</strong></p>
 <p>{{ currentEvent.content }}</p>
