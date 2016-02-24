@@ -20,3 +20,30 @@ This Jekyll plugin take a collection of events and filters out the "current" eve
 
     ```
 * Keep in mind this is an early version of this plugin, and I'm not a Ruby coder. Improvements (PRs) are very welcome :)
+
+## Front Matter
+
+Your event files require a special YAML Front Matter block at the beginning. In particular, the `start` key is required for figuring out the current event.
+
+Here is an example:
+
+```
+---
+layout: event
+title: "Next Meetup of our Group"
+start: 2016-02-25T19:00:00.00+01:00
+end: 2016-02-25T22:00:00.00+01:00
+location: "Our usual meetup location"
+---
+```
+
+## In your Page
+
+Now, you can access the current event data in your page: `site.data.currentEvent`
+
+```
+{% assign currentEvent = site.data.currentEvent %}
+<h2><a href="{{ currentEvent.url }}">{{ currentEvent.start | localize: "%d. %B %Y, %H:%M" }}</a></h2>
+<p><strong>{{ currentEvent.location }}</strong></p>
+<p>{{ currentEvent.content }}</p>
+```
